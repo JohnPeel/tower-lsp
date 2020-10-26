@@ -16,8 +16,7 @@ exclude = ["./tower-lsp-macros"]
 [dependencies]
 async-trait = "0.1"
 auto_impl = "0.4"
-# tokio-util uses 0.5
-bytes = "0.5"
+bytes = "0.6"
 dashmap = "3.11"
 futures = { version = "0.3", default-features = false, features = ["std", "async-await"] }
 log = "0.4"
@@ -32,9 +31,13 @@ tower-service = "0.3"
 
 [dev-dependencies]
 env_logger = "0.8"
-tokio = { version = "0.3", features = ["io-std", "io-util", "macros", "net", "test-util"] }
+tokio = { version = "0.3", features = ["io-std", "io-util", "macros", "net", "time", "test-util"] }
 tower-test = "0.3"
 
 [workspace]
 members = [".", "./tower-lsp-macros"]
 default-members = ["."]
+
+[patch.crates-io]
+tokio = { git = "https://github.com/JohnPeel/tokio" }
+tokio-util = { git = "https://github.com/JohnPeel/tokio" }
